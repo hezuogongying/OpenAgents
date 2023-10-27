@@ -49,6 +49,36 @@ sudo apt-get install -y mongodb-org
 sudo systemctl start mongod
 ```
 
+For the centos7.9 environment, install like this:
+
+The error message suggests that the URL for the MongoDB repository is incorrect or inaccessible. This can happen if there's a misconfiguration in the repository file, or if the MongoDB repository structure has changed since my last update.
+
+Let's correct this. We will use the official documentation to ensure accuracy:
+
+1. *add the MongoDB repository**:
+As of my last training data (up to January 2022), here's the correct way to add the MongoDB 4.4 repository for CentOS 7:
+
+```bash
+echo "[mongodb-org-4.4]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/7/mongodb-org/4.4/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-4.4.asc" | sudo tee /etc/yum.repos.d/mongodb-org-4.4.repo
+```
+
+2. **Retry the installation**:
+```bash
+sudo yum clean all
+sudo yum update
+sudo yum install -y mongodb-org
+```
+
+This should resolve the issue. If it persists, I would recommend going to MongoDB's official documentation or repository page to check if there have been any updates or changes to the repository structure post-January 2022.
+sudo apt-get install -y mongodb-org
+sudo systemctl start mongod
+
+
 Then create collections in mongodb, ready for coming data!
 ```bash
 mongosh
